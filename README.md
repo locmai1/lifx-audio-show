@@ -23,15 +23,21 @@ Which to use: (index)
 ```
 5. Choose mode and adjust sliders of properties
 ### Properties
+```
 Frequency
 Brightness
 Saturation
+```
 ### Modes:
+```
 Energy
 Scroll
 Spectrum
 Sine
 Flat
+```
 ### Controls:
+```
 Off
 On
+```
