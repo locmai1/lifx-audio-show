@@ -16,8 +16,7 @@ except:
     exit()
 
 lights = []
-order = ["674613","6F3BF1","6F3080","6F49BA"]
-for name in order:
+for name in config.LIGHT_ORDER:
     lights.append(lifx.get_device_by_name(name))
 
 for bulb in lights:

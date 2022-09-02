@@ -3,6 +3,8 @@ from __future__ import print_function
 from __future__ import division
 import os
 
+LIGHT_ORDER = ["674613","6F3BF1","6F3080","6F49BA"]
+
 SOFTWARE_GAMMA_CORRECTION = True
 """Soften the brightness of the light(s)"""
 
