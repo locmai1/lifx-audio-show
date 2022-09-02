@@ -4,6 +4,7 @@ pip install -r requirements.txt
 ```
 
 # Setup and Configuration
+### Steps:
 1. Install Python and dependencies
 2. Input order of lights into config.py in LIGHT_ORDER array
 ```
