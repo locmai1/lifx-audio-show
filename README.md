@@ -1,9 +1,9 @@
-### Installing dependencies
+# Installing dependencies
 ```
 pip install -r requirements.txt
 ```
 
-### Setup and Configuration
+# Setup and Configuration
 1. Install Python and dependencies
 2. Input order of lights into config.py in LIGHT_ORDER array
 ```
@@ -22,13 +22,13 @@ Audio Devices:
 Which to use: (index)
 ```
 5. Choose mode and adjust sliders of properties
-# Properties
+### Properties
 ```
 Frequency
 Brightness
 Saturation
 ```
-# Modes:
+### Modes:
 ```
 Energy
 Scroll
@@ -36,7 +36,7 @@ Spectrum
 Sine
 Flat
 ```
-# Controls:
+### Controls:
 ```
 Off
 On
