@@ -25,15 +25,21 @@ Which to use: (index)
 5. Choose mode and adjust sliders of properties
 
 # Properties
+```
 * Frequency (0 - 22050 hz)
 * Brightness (0 - 65535)
 * Saturation (0 - 65535)
+```
 # Modes:
+```
 * Energy
 * Scroll
 * Spectrum
 * Sine
 * Flat (Modifies other Modes)
+```
 # Controls:
+```
 * Off
 * On
+```
