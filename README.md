@@ -23,16 +23,17 @@ Audio Devices:
 Which to use: (index)
 ```
 5. Choose mode and adjust sliders of properties
-### Properties
+
+# Properties
 * Frequency
 * Brightness
 * Saturation
-### Modes:
+# Modes:
 * Energy
 * Scroll
 * Spectrum
 * Sine
 * Flat
-### Controls:
+# Controls:
 * Off
 * On
