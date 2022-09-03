@@ -12,7 +12,8 @@ for i in range(p.get_device_count()):
     device = p.get_device_info_by_index(i)
     if (device['hostApi'] == 0):
         print("    %s : %d" % (device['name'], device['index']))
-input_device = int(input('Input Device: '))
+input_device = int(input('\nInput Device: '))
+print('')
 
 frames_per_buffer = int(config.MIC_RATE / config.FPS)
 stream = p.open(format=pyaudio.paInt16,

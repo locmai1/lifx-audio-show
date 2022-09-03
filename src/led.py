@@ -8,11 +8,12 @@ import platform
 from lifxlan import LifxLAN
 
 
-# Try to fetch all lights based on order from config
+"""Try to fetch all lights based on order from config"""
 try:
     lifx = LifxLAN(config.NUM_LIGHTS)
-
     devices = []
+
+    print('\nLIFX Devices:')
     for i in range(len(config.ORDER_LIGHTS)):
         device = lifx.get_device_by_name(config.ORDER_LIGHTS[i])
         devices.append(device)
@@ -62,11 +63,10 @@ def update():
     for i in range(config.NUM_LIGHTS):
         fcolor.append([])
     
-    # Change colors array based on postitions
+    # Change colors based on each light postition
     if config.FLAT_MODE:
         color = RGBtoHSBK((r[50],g[50],b[50]))
         lifx.set_color_all_lights(color, rapid=True)
-
     else:        
         for i in range(len(devices)):
             position = int((config.N_PIXELS / (len(devices) + 1)) * (i + 1))
