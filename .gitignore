@@ -49,6 +49,7 @@ Temporary Items
 *.pdf
 
 # venv
+bin/
 Include/
 Lib/
 Scripts/

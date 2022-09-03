@@ -9,14 +9,14 @@ from lifxlan import LifxLAN
 
 
 try:
-    lifx = LifxLAN()
+    lifx = LifxLAN(config.NUM_LIGHTS)
     devices = lifx.get_lights()
 except:
     print('LIFX Devices not found!')
     exit()
 
 lights = []
-for name in config.LIGHT_ORDER:
+for name in config.ORDER_LIGHTS:
     lights.append(lifx.get_device_by_name(name))
 
 for bulb in lights:

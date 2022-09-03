@@ -462,7 +462,7 @@ if __name__ == '__main__':
             off_label.setText('Off', color=inactive_color)
             on_label.setText('On', color=active_color)
 
-        pattern_label = pg.LabelItem('Patterns:')
+        pattern_label = pg.LabelItem('Modes:')
         energy_label = pg.LabelItem('Energy')
         scroll_label = pg.LabelItem('Scroll')
         spectrum_label = pg.LabelItem('Spectrum')
