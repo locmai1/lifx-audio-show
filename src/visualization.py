@@ -393,6 +393,7 @@ if __name__ == '__main__':
             flat_label.setText('Flat', color=inactive_color)
             off_label.setText('Off', color=inactive_color)
             on_label.setText('On', color=inactive_color)
+            kill_label.setText('Kill', color=inactive_color)
 
         def scroll_click(x):
             config.FLAT_MODE = False
@@ -405,6 +406,7 @@ if __name__ == '__main__':
             flat_label.setText('Flat', color=inactive_color)
             off_label.setText('Off', color=inactive_color)
             on_label.setText('On', color=inactive_color)
+            kill_label.setText('Kill', color=inactive_color)
 
         def spectrum_click(x):
             config.FLAT_MODE = False
@@ -417,6 +419,7 @@ if __name__ == '__main__':
             flat_label.setText('Flat', color=inactive_color)
             off_label.setText('Off', color=inactive_color)
             on_label.setText('On', color=inactive_color)
+            kill_label.setText('Kill', color=inactive_color)
 
         def sine_click(x):
             config.FLAT_MODE = False
@@ -429,6 +432,7 @@ if __name__ == '__main__':
             flat_label.setText('Flat', color=inactive_color)
             off_label.setText('Off', color=inactive_color)
             on_label.setText('On', color=inactive_color)
+            kill_label.setText('Kill', color=inactive_color)
 
         def flat_click(x):
             config.FLAT_MODE = True
@@ -439,6 +443,7 @@ if __name__ == '__main__':
             flat_label.setText('Flat', color=active_color)
             off_label.setText('Off', color=inactive_color)
             on_label.setText('On', color=inactive_color)
+            kill_label.setText('Kill', color=inactive_color)
 
         def off_click(x):
             config.FLAT_MODE = False
@@ -450,6 +455,7 @@ if __name__ == '__main__':
             flat_label.setText('Flat', color=inactive_color)
             off_label.setText('Off', color=active_color)
             on_label.setText('On', color=inactive_color)
+            kill_label.setText('Kill', color=inactive_color)
 
         def on_click(x):
             config.FLAT_MODE = False
@@ -461,6 +467,13 @@ if __name__ == '__main__':
             flat_label.setText('Flat', color=inactive_color)
             off_label.setText('Off', color=inactive_color)
             on_label.setText('On', color=active_color)
+            kill_label.setText('Kill', color=inactive_color)
+
+        def kill_click(x):
+            config.FLAT_MODE = False
+            microphone.stop_stream()
+            led.off()
+            exit()
 
         pattern_label = pg.LabelItem('Modes:')
         energy_label = pg.LabelItem('Energy')
@@ -472,7 +485,8 @@ if __name__ == '__main__':
         control_label = pg.LabelItem('Controls:')
         off_label = pg.LabelItem('Off')
         on_label = pg.LabelItem('On')
-        blank_label = pg.LabelItem('')
+        # blank_label = pg.LabelItem('')
+        kill_label = pg.LabelItem('Kill')
 
         energy_label.mousePressEvent = energy_click
         scroll_label.mousePressEvent = scroll_click
@@ -481,6 +495,7 @@ if __name__ == '__main__':
         flat_label.mousePressEvent = flat_click
         off_label.mousePressEvent = off_click
         on_label.mousePressEvent = on_click
+        kill_label.mousePressEvent = kill_click
 
         energy_click(0)
         # Layout
@@ -512,8 +527,9 @@ if __name__ == '__main__':
         layout.addItem(control_label, colspan=5)
         layout.nextRow()
         layout.addItem(off_label, colspan=2)
-        layout.addItem(blank_label, colspan=1)
+        # layout.addItem(blank_label, colspan=1)
         layout.addItem(on_label, colspan=2)
+        layout.addItem(kill_label, colspan=1)
 
     # Start listening to live audio stream
     microphone.start_stream(microphone_update)

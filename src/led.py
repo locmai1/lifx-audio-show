@@ -8,20 +8,20 @@ import platform
 from lifxlan import LifxLAN
 
 
+# Try to fetch all lights based on order from config
 try:
     lifx = LifxLAN(config.NUM_LIGHTS)
-    devices = lifx.get_lights()
+
+    devices = []
+    for i in range(len(config.ORDER_LIGHTS)):
+        device = lifx.get_device_by_name(config.ORDER_LIGHTS[i])
+        devices.append(device)
+
+        device.set_power('on')
+        print("    {}: {}".format(i+1, device.get_label()))
 except:
     print('LIFX Devices not found!')
     exit()
-
-lights = []
-for name in config.ORDER_LIGHTS:
-    lights.append(lifx.get_device_by_name(name))
-
-for bulb in lights:
-    bulb.set_power("on")
-    print("    Selected: {}".format(bulb.get_label()))
     
 
 _gamma = np.load(config.GAMMA_TABLE_PATH)
@@ -47,13 +47,6 @@ def off():
     except:
         print('LIFX Devices not found!')
 
-def reset():
-    arr = []
-    for i in range(len(lights)):
-        arr.append([])
-    
-    return arr
-
 def update():
     global pixels, _prev_pixels
     # Truncate values and cast to integer
@@ -65,24 +58,26 @@ def update():
     g = p[1][:].astype(int)
     b = p[2][:].astype(int)
 
-    fcolor = reset()
+    fcolor = []
+    for i in range(config.NUM_LIGHTS):
+        fcolor.append([])
     
     # Change colors array based on postitions
     if config.FLAT_MODE:
-        color = RGBtoHSBK((r[60],g[60],b[60]))
+        color = RGBtoHSBK((r[50],g[50],b[50]))
         lifx.set_color_all_lights(color, rapid=True)
 
     else:        
-        for i in range(len(lights)):
-            position = int((config.N_PIXELS / (len(lights) + 1)) * (i + 1))
+        for i in range(len(devices)):
+            position = int((config.N_PIXELS / (len(devices) + 1)) * (i + 1))
             color = RGBtoHSBK((r[position],g[position],b[position]))
             fcolor[i] = color
 
-        for i in range(len(lights)):
-            lights[i].set_color(fcolor[i],rapid=True)
+        for i in range(len(devices)):
+            devices[i].set_color(fcolor[i],rapid=True)
 
-    fcolor = reset()
 
+    """ OLD METHOD """
     # part = (config.N_PIXELS // 2)
     # piece = part // (len(lights) // 2 + 1)
 
@@ -140,6 +135,7 @@ def RGBtoHSBK (RGB, temperature = 3500):
     return color
 
 
+""" TEST LED.PY """
 # Execute this file to run a LED strand test
 # If everything is working, you should see a red, green, and blue pixel scroll
 # across the LED strip continuously

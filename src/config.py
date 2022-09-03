@@ -7,12 +7,12 @@ NUM_LIGHTS = 7
 """Number of Lights to be used for visualization"""
 
 ORDER_LIGHTS = ["LIFX Candle Color 6F3ED0",
-               "LIFX Candle Color 64BF40",
-               "LIFX Candle Color 674622",
-               "LIFX Candle Color 674613",
-               "LIFX Candle Color 6F3BF1",
-               "LIFX Candle Color 6F3080",
-               "LIFX Candle Color 6F49BA"]
+                "LIFX Candle Color 64BF40",
+                "LIFX Candle Color 674622",
+                "LIFX Candle Color 674613",
+                "LIFX Candle Color 6F3BF1",
+                "LIFX Candle Color 6F3080",
+                "LIFX Candle Color 6F49BA"]
 """Order in which the light(s) are position along the visualization"""
 
 SOFTWARE_GAMMA_CORRECTION = True
