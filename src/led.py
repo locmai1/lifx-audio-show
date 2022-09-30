@@ -11,15 +11,24 @@ from lifxlan import LifxLAN
 """Try to fetch all lights based on order from config"""
 try:
     lifx = LifxLAN(config.NUM_LIGHTS)
+    all_devices = lifx.get_lights()
     devices = []
 
     print('\nLIFX Devices:')
-    for i in range(len(config.ORDER_LIGHTS)):
-        device = lifx.get_device_by_name(config.ORDER_LIGHTS[i])
-        devices.append(device)
+    for name in config.ORDER_LIGHTS:
+        for device in all_devices:
+            label = device.get_label()
+            if label == name:
+                devices.append(device)
+                device.set_power('on')
+                print("    {} connected!".format(label))
 
-        device.set_power('on')
-        print("    {}: {}".format(i+1, device.get_label()))
+    # for name in config.ORDER_LIGHTS:
+        # device = lifx.get_device_by_name(name)
+        # devices.append(device)
+
+        # device.set_power('on')
+        # rint("    {} connected!".format(device.get_label()))
 except:
     print('LIFX Devices not found!')
     exit()
@@ -59,22 +68,15 @@ def update():
     g = p[1][:].astype(int)
     b = p[2][:].astype(int)
 
-    fcolor = []
-    for i in range(config.NUM_LIGHTS):
-        fcolor.append([])
-    
     # Change colors based on each light postition
     if config.FLAT_MODE:
         color = RGBtoHSBK((r[50],g[50],b[50]))
         lifx.set_color_all_lights(color, rapid=True)
     else:        
-        for i in range(len(devices)):
-            position = int((config.N_PIXELS / (len(devices) + 1)) * (i + 1))
+        for i in range(config.NUM_LIGHTS):
+            position = int((config.N_PIXELS / config.NUM_LIGHTS+1)) * (i+1)
             color = RGBtoHSBK((r[position],g[position],b[position]))
-            fcolor[i] = color
-
-        for i in range(len(devices)):
-            devices[i].set_color(fcolor[i],rapid=True)
+            devices[i].set_color(color, rapid=True)
 
 
     """ OLD METHOD """

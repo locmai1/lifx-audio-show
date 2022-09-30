@@ -29,7 +29,7 @@ brew install portaudio
 
 ## Setting up Lights
 
-It's recommended to set up the lights in the **Official LIFX App** rather than Apple Home to avoid connectivity issues with program. Refer to `lights/data.txt` for information on the lights that David and I have already marked up. 
+It's recommended to set up the lights in the **Official LIFX App** rather than Apple Home to avoid connectivity issues with program. Refer to `lights/data.txt` for information on the lights that are marked up. 
 
 * '#' ---> What each light is marked with in accordance to its Label and HK Code
 * 'Label' ---> Name you should put when setting up each light in the app
